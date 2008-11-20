@@ -276,8 +276,6 @@ class CreateWhere extends FoodExScreen
 	
 	public function getLocation()
 	{
-
-
 		var owner:CreateWhere = this;
 		
 		// ignore XML white space
@@ -291,44 +289,17 @@ class CreateWhere extends FoodExScreen
 	
 		var addressXML:XML = new XML();
 		addressXML.contentType = "application/xml";
-//		var topElement:XMLNode = addressXML.createElement("EVENT");
-//		addressXML.appendChild(topElement);
-//		
-//		// create XML formatted data to send to the server
-//		
-//		// 1. event info - event meta data
-//		var eventElement:XMLNode = addressXML.createElement("EVENTINFO");
-//		eventElement.attributes.requesttype = 	1;
-//		eventElement.attributes.address = infoPane.nameText.text;
-//		topElement.appendChild(eventElement);
-////		
-////		// 5. sender info
-////		eventElement = addressXML.createElement("SENDERDATA");
-////		eventElement.attributes.name = 			FoodExDef.UserName;		
-////		eventElement.attributes.number = 		FoodExDef.UserPhoneNumber;	
-////		eventElement.attributes.gpsx = 			FoodExDef.UserGPSX;
-////		eventElement.attributes.gpsy = 			FoodExDef.UserGPSY;
-////		topElement.appendChild(eventElement);			
-//
-//
-//		// send the XML formatted data to the server
 
 		trace(infoPane.addressText.text);
 		if (infoPane.addressText.text != "")
 		{
 			var addressString:String = infoPane.addressText.text;
+			addressString = addressString.split(" ").join("+");
 			trace (addressString);
-//			for (var i:Number=0; i<addressString.length; i++)
-//			{
-//				if (addressString.charAt(i) == ' ')
-//					
-//				else
-//					tempString
-//			}
+
 			var finalAddressString:String = "http://maps.google.com/maps/geo?q=" + addressString + "&output=csv&sensor=false&key=ABQIAAAA7BXkVswHspiZHMVABbxQ-BRdNqZsuGa3rxjIi4xkdxLp_lGPxxSOYld3AJk5XhFMURcll1mbR_TiPg";
 			addressXML.sendAndLoad(finalAddressString, locationReplyXML, "POST");
 		}
-		//addressXML.sendAndLoad("http://www.mcpanic.com/data/map.php", locationReplyXML, "POST");
 	}
 	
 	public function handleLEFT()
