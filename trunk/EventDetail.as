@@ -396,14 +396,9 @@ class EventDetail extends MovieClip
 
 	private function sendReminder()
 	{
-		if (System.capabilities.hasSMS)
-		{
-			var eventSMS:String = eventItem.getTitleString() + eventItem.getMessageString() + eventItem.getPlaceName() + eventItem.getDateTime().toString();
- 			// TODO: Getting the phone number of the currently selected person
-			getURL("sms:" + "650-111-1111" + "?body=" + eventSMS);
-		}
-		else
-			trace("Can't send SMS.  System.capabilities.hasSMS == false.");		
+		/*
+			TODO: send to server
+		*/
 		openAlert("Reminder message was sent.");
 	}
 
