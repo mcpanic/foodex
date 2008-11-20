@@ -318,6 +318,13 @@ class CreateWhere extends FoodExScreen
 		{
 			var addressString:String = infoPane.addressText.text;
 			trace (addressString);
+//			for (var i:Number=0; i<addressString.length; i++)
+//			{
+//				if (addressString.charAt(i) == ' ')
+//					
+//				else
+//					tempString
+//			}
 			var finalAddressString:String = "http://maps.google.com/maps/geo?q=" + addressString + "&output=csv&sensor=false&key=ABQIAAAA7BXkVswHspiZHMVABbxQ-BRdNqZsuGa3rxjIi4xkdxLp_lGPxxSOYld3AJk5XhFMURcll1mbR_TiPg";
 			addressXML.sendAndLoad(finalAddressString, locationReplyXML, "POST");
 		}
@@ -327,6 +334,8 @@ class CreateWhere extends FoodExScreen
 	public function handleLEFT()
 	{
 		getLocation();
+//		if(_mode != SELECT_MODE) setMode(SELECT_MODE);
+
 	}
 	
 	public function handleENTER()
