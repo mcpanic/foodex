@@ -342,6 +342,13 @@ class CreateWho extends FoodExScreen
 				{
 					// send name and phoneNumber to show on the top
 					showhost(arrContacts[i][0], arrContacts[i][1]);
+
+					var tf:TextFormat = contact.txtDistance.getTextFormat();
+					tf.bold = true;
+					contact.txtDistance.setTextFormat(tf);
+					tf = contact.txtName.getTextFormat();
+					tf.bold = true;
+					contact.txtName.setTextFormat(tf);
 					contact.txtDistance.text = "will come";
 					contact.txtDistance.textColor = 0x0000FF;					
 				}

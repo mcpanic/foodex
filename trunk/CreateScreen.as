@@ -373,11 +373,12 @@ class CreateScreen extends MovieClip
 					}						
 				}					
 			}
+
 			for (var i:Number=0; i<eventItem.getWhoData().arrContacts.length; i++)
 				trace(eventItem.getWhoData().arrContacts[i][0] +","+ eventItem.getWhoData().arrContacts[i][1]+","+ eventItem.getWhoData().arrContacts[i][2]+","+ eventItem.getWhoData().arrContacts[i][3]+","+ eventItem.getWhoData().arrContacts[i][4]);
-			//closeLoadingAlert();
-			
-		} else {
+		}
+		else
+		{
 			trace("an error occurred.");
 		}
 		
