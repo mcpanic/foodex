@@ -26,8 +26,8 @@
 		where._placeName = "The Cafe";
 		where._phoneNo = "650-725-9512";
 		where._address = "326 Galvez Street\nStanford, CA 94305";
-		where._longitude = -122.1633;
-		where._latitude = 37.4343029;
+		where._longitude = 37.4343029;
+		where._latitude = -122.1633;
 		
 		_addressList.push(where);
 		
