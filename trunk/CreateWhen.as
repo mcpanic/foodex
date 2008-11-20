@@ -85,20 +85,20 @@ class CreateWhen extends FoodExScreen
 		switch (focus)
 		{
 			case 1:		// Date
-				this.target.createscreen.image_when.focus_arrow._x = 105;
-				this.target.createscreen.image_when.focus_arrow._y = 35;
+				this.target.createscreen.image_when.focus_arrow._x = 100;
+				this.target.createscreen.image_when.focus_arrow._y = 26;
 				break;
 			case 2:		// Hour
-				this.target.createscreen.image_when.focus_arrow._x = 50;
-				this.target.createscreen.image_when.focus_arrow._y = 125;
+				this.target.createscreen.image_when.focus_arrow._x = 45;
+				this.target.createscreen.image_when.focus_arrow._y = 116;
 				break;
 			case 3:		// Minute
-				this.target.createscreen.image_when.focus_arrow._x = 110;
-				this.target.createscreen.image_when.focus_arrow._y = 125;
+				this.target.createscreen.image_when.focus_arrow._x = 105;
+				this.target.createscreen.image_when.focus_arrow._y = 116;
 				break;
 			case 4:		// AM/PM
-				this.target.createscreen.image_when.focus_arrow._x = 170;
-				this.target.createscreen.image_when.focus_arrow._y = 125;
+				this.target.createscreen.image_when.focus_arrow._x = 165;
+				this.target.createscreen.image_when.focus_arrow._y = 116;
 				break;
 		}
 	}
