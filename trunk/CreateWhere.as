@@ -326,11 +326,7 @@ class CreateWhere extends FoodExScreen
 	
 	public function handleLEFT()
 	{
-<<<<<<< .mine
 		getLocation();
-//		if(_mode != SELECT_MODE) setMode(SELECT_MODE);
-=======
->>>>>>> .r21
 	}
 	
 	public function handleENTER()
