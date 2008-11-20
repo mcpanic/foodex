@@ -550,22 +550,32 @@ class CreateScreen extends MovieClip
 		{
 			case ExtendedKey.SOFT1:
 				if(screen_down.getMode() == CreateWhere.INFO_MODE)
-				{
-					// Store location
-					screen_down.saveSelectedData();
-					updateWhereData();
-					showEventData();
-					// go to 'center'
-					selected_screen = selected_screen + 1;
-					move_y();
+				{ // Info mode 
+					if(screen_down.hasSelectedAddress() && !screen_down._changeSelect)
+					{// show list
+						screen_down.setMode(CreateWhere.SELECT_MODE);
+						screen_down._changeSelect = true;
+					}
+					else
+					{// save and exit
+						// Store location
+						screen_down.saveSelectedData();
+						screen_down._changeSelect = false;
+						updateWhereData();
+						showEventData();
+						// go to 'center'
+						selected_screen = selected_screen + 1;
+						move_y();
+					}
 				}
 				else
-				{
+				{ // Select mode - Change to Info mode.
 					screen_down.setSelectedAddress();
 					screen_down.setMode(CreateWhere.INFO_MODE);
 				}
 				break;
 			case ExtendedKey.SOFT2:
+				screen_down._changeSelect = false;
 				showEventData();
 				// go to 'center'
 				selected_screen = selected_screen + 1;
@@ -584,19 +594,7 @@ class CreateScreen extends MovieClip
 				screen_down.handleRIGHT();
 				break;
 			case Key.ENTER:
-//				if(screen_down.getMode() == CreateWhere.INFO_MODE)
-//				{
-//					// Store location
-//					updateWhereData();
-//					showEventData();
-//					// go to 'center'
-//					selected_screen = selected_screen + 1;
-//					move_y();
-//				}
-//				else
-//				{
-					screen_down.handleENTER();
-//				}
+				screen_down.handleENTER();
 				break;
 		}
 	}

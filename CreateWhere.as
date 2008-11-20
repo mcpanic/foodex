@@ -12,6 +12,8 @@ class CreateWhere extends FoodExScreen
 	
 	private var _readOnly:Boolean = false;
 	
+	private var button1:TextField;
+	
 	// select panel components
 	private static var MAX_SELECT:Number = 5;
 	
@@ -30,6 +32,8 @@ class CreateWhere extends FoodExScreen
 	private var mapImage:MovieClip;
 	private var _editEnabled = false;
 	private var _zoom:Number = 15;
+	
+	public var _changeSelect:Boolean = false;
 	
 	private var txtListener:Object;
 	
@@ -79,6 +83,8 @@ class CreateWhere extends FoodExScreen
 		infoPane = this.target.createscreen.image_where._infoPane;
 		selectPane = this.target.createscreen.image_where._selectPane;
 		
+		button1 = this.target.createscreen.buttons_where.text1;
+		
 		initSelectPaneComponents();
 		
 		infoPane._visible = false;
@@ -109,7 +115,7 @@ class CreateWhere extends FoodExScreen
 	public function initScreen()
 	{
 		// check if prev selected
-		if(_selectData != null)
+		if(hasSelectedAddress())
 		{
 			setMode(INFO_MODE);
 		}
@@ -140,6 +146,15 @@ class CreateWhere extends FoodExScreen
 	{
 		if(m == INFO_MODE)
 		{
+			trace(hasSelectedAddress());
+			if(hasSelectedAddress() && !_changeSelect)
+			{
+				this.target.createscreen.buttons_where.text1.text = "Change";
+			}
+			else
+			{
+				this.target.createscreen.buttons_where.text1.text = "OK";
+			}
 			selectPane._visible = false;
 			infoPane._visible = true;
 			
@@ -147,6 +162,8 @@ class CreateWhere extends FoodExScreen
 		}
 		else
 		{
+			this.target.createscreen.buttons_where.text1.text = "OK";
+			
 			selectPane._visible = true;
 			infoPane._visible = false;
 			
@@ -166,10 +183,10 @@ class CreateWhere extends FoodExScreen
 		_selectData = _addrArray[_selectNo-1];
 	}
 	
-//	public function isSelected():Boolean
-//	{
-//		return _selectData != null;
-//	}
+	public function hasSelectedAddress():Boolean
+	{
+		return _selectData != null;
+	}
 		
 // Key handlers
 	public function handleUP()
@@ -208,7 +225,6 @@ class CreateWhere extends FoodExScreen
 	
 	public function handleLEFT()
 	{
-//		if(_mode != SELECT_MODE) setMode(SELECT_MODE);
 	}
 	
 	public function handleENTER()
@@ -225,11 +241,11 @@ class CreateWhere extends FoodExScreen
 		{
 			if(_editEnabled)
 			{
-				// if nothing has focus changeMode
+				// TODO: handle
 			}
 			else
 			{
-				setMode(SELECT_MODE);
+//				setMode(SELECT_MODE);
 			}
 		}
 	}
