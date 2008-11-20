@@ -418,13 +418,79 @@ class EventDetail extends MovieClip
 		this.target.createscreen.popup_alert.removeMovieClip();
 		isAlertMode = false;
 	}
+	
+	private function remindXMLOnLoad(success:Boolean, inputXML:XML):Void 
+	{
+trace("RESPONSE: " + inputXML);		
+		if (success) {
+			
+			if (inputXML.firstChild.attributes.EVENTID)
+			{
+				// Save this value to some place for later use
+			}
+			if (inputXML.firstChild.attributes.RESPONSETYPE != FoodExDef.PacketType.REMIND)
+			{
+				trace("Error in response type!");
+			}
+			switch (inputXML.firstChild.attributes.STATUS) 
+			{
+			case 'OK' :
+				trace("OK returned");
+				break;
+			case 'FAILURE' :
+				trace("FAILURE returned");
+				break;
+			default :
+				// this should never happen
+				trace("Unexpected value received for STATUS.");
+			}	
+		} else {
+			trace("an error occurred.");
+		}
+		
+	}
+	
 
 	private function sendReminder()
 	{
-		/*
-			TODO: send to server
-		*/
-		openAlert("Reminder message was sent.");
+		var owner:EventDetail = this;		
+		// ignore XML white space
+		XML.prototype.ignoreWhite = true;
+		// Construct an XML object to hold the server's reply
+		var remindReplyXML:XML = new XML();
+		// this function triggers when an XML packet is received from the server.		
+		remindReplyXML.onLoad = function(success:Boolean) {
+			owner.remindXMLOnLoad(success, this, FoodExDef.PacketType.REMIND);
+		};
+		
+		// this function triggers when the login_btn is clicked
+			var remindXML:XML = new XML();
+			remindXML.contentType = "application/xml";
+			var topElement:XMLNode = remindXML.createElement("EVENT");
+			remindXML.appendChild(topElement);
+			
+			// create XML formatted data to send to the server
+			
+			// 1. event info - event meta data
+			var eventElement:XMLNode = remindXML.createElement("EVENTINFO");
+			eventElement.attributes.requesttype = 	FoodExDef.PacketType.REMIND;		// 5: Modify Event	
+			eventElement.attributes.eventid = 		eventItem.getEventID();	// New event ID default to 0, automatically assigned by the server
+			topElement.appendChild(eventElement);
+			
+			// 5. sender info
+			eventElement = remindXML.createElement("SENDERDATA");
+			eventElement.attributes.name = 			FoodExDef.UserName;		
+			eventElement.attributes.number = 		FoodExDef.UserPhoneNumber;	
+			eventElement.attributes.gpsx = 			FoodExDef.UserGPSX;
+			eventElement.attributes.gpsy = 			FoodExDef.UserGPSY;
+
+			topElement.appendChild(eventElement);			
+
+			// send the XML formatted data to the server
+			trace(remindXML);
+			remindXML.sendAndLoad(FoodExDef.SeverAddress, remindReplyXML, "POST");		
+		
+			openAlert("Reminder message was sent.");
 	}
 
 	private function initWhere(ro:Boolean)
