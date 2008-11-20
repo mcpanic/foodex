@@ -223,8 +223,114 @@ class CreateWhere extends FoodExScreen
 	{
 	}
 	
+	private function locationXMLOnLoad(success:Boolean, inputXML:XML):Void 
+	{
+		trace("XML: " + inputXML);
+		if (success) 
+		{	
+		var latitude:Number;
+		var longitude:Number;
+		var arg:String = inputXML.toString();
+		var temp_num1:Number = arg.indexOf(",");
+		arg = arg.slice(temp_num1+1, arg.length);
+		temp_num1 = arg.indexOf(",");
+		arg = arg.slice(temp_num1+1, arg.length);
+		temp_num1 = arg.indexOf(",");
+		latitude = Number(arg.slice(0,temp_num1));
+		longitude = Number(arg.slice(temp_num1+1, arg.length)); 
+		trace("latitude:" + latitude);
+		trace("longitude:" + longitude);
+		updateMap(latitude, longitude);		
+	//var nName:String = arg.slice(temp_num1, arg.length).split(",").join("");
+	//trace("HIT: "+nummer+"||"+nName );
+
+		
+//			if (inputXML.firstChild.attributes.EVENTID)
+//			{
+//				// Save this value to some place for later use
+//			}
+//			if (inputXML.firstChild.attributes.RESPONSETYPE != FoodExDef.PacketType.RADIUSLIST)
+//			{
+//				trace("Error in response type!");
+//			}
+//			trace (inputXML.firstChild.attributes.LAT + "," + inputXML.firstChild.attributes.LNG);
+//			switch (inputXML.firstChild.attributes.STATUS) {
+//			case 'OK' :
+//				trace("OK returned");
+//				break;
+//			case 'FAILURE' :
+//				trace("FAILURE returned");
+//				break;
+//			default :
+//				// this should never happen
+//				trace("Unexpected value received for STATUS.");
+//			}
+	
+		}
+		else
+		{
+			trace("an error occurred.");
+		}
+		
+	}		
+	
+	public function getLocation()
+	{
+
+
+		var owner:CreateWhere = this;
+		
+		// ignore XML white space
+		XML.prototype.ignoreWhite = true;
+		// Construct an XML object to hold the server's reply
+		var locationReplyXML:XML = new XML();
+		// this function triggers when an XML packet is received from the server.		
+		locationReplyXML.onLoad = function(success:Boolean) {
+			owner.locationXMLOnLoad(success, this);
+		}
+	
+		var addressXML:XML = new XML();
+		addressXML.contentType = "application/xml";
+//		var topElement:XMLNode = addressXML.createElement("EVENT");
+//		addressXML.appendChild(topElement);
+//		
+//		// create XML formatted data to send to the server
+//		
+//		// 1. event info - event meta data
+//		var eventElement:XMLNode = addressXML.createElement("EVENTINFO");
+//		eventElement.attributes.requesttype = 	1;
+//		eventElement.attributes.address = infoPane.nameText.text;
+//		topElement.appendChild(eventElement);
+////		
+////		// 5. sender info
+////		eventElement = addressXML.createElement("SENDERDATA");
+////		eventElement.attributes.name = 			FoodExDef.UserName;		
+////		eventElement.attributes.number = 		FoodExDef.UserPhoneNumber;	
+////		eventElement.attributes.gpsx = 			FoodExDef.UserGPSX;
+////		eventElement.attributes.gpsy = 			FoodExDef.UserGPSY;
+////		topElement.appendChild(eventElement);			
+//
+//
+//		// send the XML formatted data to the server
+
+		trace(infoPane.addressText.text);
+		if (infoPane.addressText.text != "")
+		{
+			var addressString:String = infoPane.addressText.text;
+			trace (addressString);
+			var finalAddressString:String = "http://maps.google.com/maps/geo?q=" + addressString + "&output=csv&sensor=false&key=ABQIAAAA7BXkVswHspiZHMVABbxQ-BRdNqZsuGa3rxjIi4xkdxLp_lGPxxSOYld3AJk5XhFMURcll1mbR_TiPg";
+			addressXML.sendAndLoad(finalAddressString, locationReplyXML, "POST");
+		}
+		//addressXML.sendAndLoad("http://www.mcpanic.com/data/map.php", locationReplyXML, "POST");
+	}
+	
 	public function handleLEFT()
 	{
+<<<<<<< .mine
+		getLocation();
+//		if(_mode != SELECT_MODE) setMode(SELECT_MODE);
+=======
+>>>>>>> .r21
 	}
 	
 	public function handleENTER()
