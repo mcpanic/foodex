@@ -299,11 +299,13 @@ class CreateWhere extends FoodExScreen
 		infoPane.phoneText.type = enable ? "input":"dynamic";
 		infoPane.addressText.type = enable ? "input":"dynamic";
 		
-		infoPane.mapLB._visible = !enable;
+//		infoPane.mapLB._visible = !enable;
 		infoPane.mapImage._visible = !enable;
-		infoPane.mapFrame._visible = !enable;
+//		infoPane.mapFrame._visible = !enable;
 		infoPane._zoomIcon._visible = !enable;
 		infoPane.loadClip._visible = !enable;
+		
+		infoPane.noMapLB._visible = enable;
 	}
 	
 	public function getPlaceName():String
