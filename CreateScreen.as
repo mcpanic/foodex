@@ -316,7 +316,7 @@ class CreateScreen extends MovieClip
 			{
 				var eventSMS:String = eventItem.getTitleString() + eventItem.getMessageString() + eventItem.getPlaceName() + eventItem.getDateTime().toString();
 				// TODO: Getting the phone number of the currently selected person
-				getURL("sms:" + "650-111-1111" + "?body=" + eventSMS);
+				getURL("sms:" + "6501111111;6502222222" + "?body=" + eventSMS);
 			}
 			else
 				trace("Can't send SMS.  System.capabilities.hasSMS == false.");			

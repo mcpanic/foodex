@@ -161,7 +161,7 @@ class CreateWho extends FoodExScreen
 	private function fillContacts(eventItem:EventData)
 	{
 		arrContacts = eventItem.getContacts(DistanceNum[selectedFilter]);
-for (var i:Number=0; i<arrContacts.length; i++)
+		for (var i:Number=0; i<arrContacts.length; i++)
 				trace(arrContacts[i][0] +","+ arrContacts[i][1]+","+ arrContacts[i][2]+","+ arrContacts[i][3]+","+ arrContacts[i][4]);
 		
 		delete arrChecked;
@@ -322,7 +322,7 @@ for (var i:Number=0; i<arrContacts.length; i++)
 				var contact:MovieClip = contactList.attachMovie("Contact", moviename, contactList.getNextHighestDepth(), {_x:0, _y:i*25});
 				contact.txtName.text = arrContacts[i][0];
 				contact.txtDistance._width = contact.txtDistance._width + 25;
-				if (arrContacts[i][3] == 1)
+				if (arrContacts[i][3] == FoodExDef.PersonStatus.ACCEPTED)
 				{
 					var tf:TextFormat = contact.txtDistance.getTextFormat();
 					tf.bold = true;
@@ -333,10 +333,17 @@ for (var i:Number=0; i<arrContacts.length; i++)
 					contact.txtDistance.text = "will come";
 					contact.txtDistance.textColor = 0x0000FF;
 				}
-				else if (arrContacts[i][3] == 2)
+				else if (arrContacts[i][3] == FoodExDef.PersonStatus.DECLINED)
 				{
 					contact.txtDistance.text = "can't come";
 					contact.txtDistance.textColor = 0xFF0000;
+				}
+				else if (arrContacts[i][3] == FoodExDef.PersonStatus.CREATED)
+				{
+					// send name and phoneNumber to show on the top
+					showhost(arrContacts[i][0], arrContacts[i][1]);
+					contact.txtDistance.text = "will come";
+					contact.txtDistance.textColor = 0x0000FF;					
 				}
 				else
 				{
