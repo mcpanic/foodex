@@ -56,8 +56,8 @@
 		where._placeName = "Olives@Bldg. 160";
 		where._phoneNo = "650-724-3160";
 		where._address = "450 Serra Mall\nStanford, CA 94305";
-		where._latitude = 37.4296615;
-		where._longitude = -122.1729139;
+		where._latitude = 37.4288868;
+		where._longitude = -122.1691945;
 		
 		_addressList.push(where);
 		
@@ -106,8 +106,8 @@
 		where._placeName = "Bytes Cafe";
 		where._phoneNo = "650-736-0456";
 		where._address = "350 Serra Mall\nStanford, CA 94305";
-		where._latitude = 37.4288868;
-		where._longitude = -122.1691945;
+		where._latitude = 37.4296615;
+		where._longitude = -122.1729139;
 		
 		_addressList.push(where);
 		

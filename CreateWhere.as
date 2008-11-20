@@ -265,10 +265,11 @@ class CreateWhere extends FoodExScreen
 	public function updateList()
 	{ 
 		// get GPS position
-		// Hewlitt 37.4296915,-122.1730594
+		// Hewlett 37.4296915,-122.1730594
+		// Gates 37.4295948,-122.1726007
 		
 		// find closest locations
-		_addrArray = AddressDB.getInstance().getClosestPlaces(37.4296915,-122.1730594, MAX_SELECT);
+		_addrArray = AddressDB.getInstance().getClosestPlaces(37.4295948,-122.1726007, MAX_SELECT);
 		
 		// create list
 		var selectTF:TextField;
