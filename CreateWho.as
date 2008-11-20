@@ -370,5 +370,10 @@ class CreateWho extends FoodExScreen
 		this.target.createscreen.image_who.scroll_bar._y = 65;
 	}
 	
-
+	private function showhost(name:String, tel:String)
+	{
+		var contact:MovieClip = this.target.createscreen.image_who.attachMovie("Host", "host", this.target.createscreen.image_who.getNextHighestDepth(), {_x:0, _y:0});
+		contact.txtName.text = name;
+		contact.txtTel.text = tel;
+	}
 };

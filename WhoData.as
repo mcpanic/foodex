@@ -61,7 +61,9 @@ class WhoData
 		var ret:Number = 0;
 		for (var i:Number = 0; i < arrContacts.length; i++)
 		{
-			if (arrContacts[i][3] == 1)
+			if (arrContacts[i][3] == FoodExDef.PersonStatus.ACCEPTED)
+				ret = ret + 1;
+			else if (arrContacts[i][3] == FoodExDef.PersonStatus.CREATED)
 				ret = ret + 1;
 		}
 		return ret;
