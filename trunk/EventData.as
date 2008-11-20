@@ -146,10 +146,11 @@
 	private function setDefaultWhereData()
 	{
 		// get GPS position
-		// Hewlitt 37.4296915,-122.1730594
+		// Hewlett 37.4296915,-122.1730594
+		// Gates 37.4295948,-122.1726007
 		
 		// set closest place if possible
-		var wd:WhereData = AddressDB.getInstance().getClosestPlaces(37.4296915, -122.1730594, 1)[0];
+		var wd:WhereData = AddressDB.getInstance().getClosestPlaces(37.4295948,-122.1726007, 1)[0];
 		
 		whereData.copy(wd);
 	}
