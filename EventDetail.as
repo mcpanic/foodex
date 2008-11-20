@@ -413,5 +413,10 @@ class EventDetail extends MovieClip
 		screen_down.enableInfoPane(false);
 		screen_down.setWhereData(eventItem.getWhereData());
 		screen_down.setMode(CreateWhere.INFO_MODE);
+		
+		if(!ro)
+		{
+			screen_down.updateList();
+		}
 	}
 }
