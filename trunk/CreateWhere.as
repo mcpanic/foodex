@@ -223,7 +223,14 @@ class CreateWhere extends FoodExScreen
 		}
 		else
 		{
-			setMode(SELECT_MODE);
+			if(_editEnabled)
+			{
+				// if nothing has focus changeMode
+			}
+			else
+			{
+				setMode(SELECT_MODE);
+			}
 		}
 	}
 	
@@ -231,13 +238,15 @@ class CreateWhere extends FoodExScreen
 	{
 		if(_selectNo == 0)
 		{ // Manual Input
-			enableInfoPane(true);
+			_editEnabled = true;
 		}
 		else
 		{ // Automated Input
 			fillInfo(_addrArray[_selectNo-1]);
-			enableInfoPane(false);
+			_editEnabled = false;
 		}
+		
+		enableInfoPane(_editEnabled);
 	}
 	
 // select pane functions
@@ -292,6 +301,8 @@ class CreateWhere extends FoodExScreen
 		infoPane.mapLB._visible = !enable;
 		infoPane.mapImage._visible = !enable;
 		infoPane.mapFrame._visible = !enable;
+		infoPane._zoomIcon._visible = !enable;
+		infoPane.loadClip._visible = !enable;
 	}
 	
 	public function getPlaceName():String
