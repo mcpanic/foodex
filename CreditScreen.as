@@ -6,6 +6,7 @@
 		attachScreen();
 		this.setTitleBar(titleText);
 		this.setButtons(buttonText1, buttonText2);
+		this.target.creditscreen.image_center.foodExVideo.play();
 	}
 	
 	private function attachScreen()
