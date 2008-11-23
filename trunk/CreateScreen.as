@@ -18,6 +18,7 @@ class CreateScreen extends MovieClip
 	private var isConfirmMode:Boolean;
 	private var isAlertMode:Boolean;
 	private var isLoading:Boolean;
+	private var isSending:Boolean;
 
 	
 	public function CreateScreen(target:MovieClip)
@@ -44,6 +45,7 @@ class CreateScreen extends MovieClip
 		isConfirmMode = false;
 		isAlertMode = false;
 		isLoading = false;
+		isSending = false;
 	}
 	
 	private function initEventData()
@@ -198,6 +200,13 @@ class CreateScreen extends MovieClip
 	{
 		this.target.createscreen.popup_alert.removeMovieClip();
 		isAlertMode = false;
+		
+		if (isSending)
+		{
+			isSending = false;
+			this.target.gotoAndStop("Home");
+			Key.removeListener(this);
+		}		
 	}
 	private function openLoadingAlert()
 	{
@@ -311,6 +320,7 @@ class CreateScreen extends MovieClip
 			trace(createXML);
 			createXML.sendAndLoad(FoodExDef.SeverAddress, createReplyXML, "POST");
 			
+			isSending = true;
 			openAlert("Message was sent to " + eventItem.getNumToSend().toString() + ((eventItem.getNumToSend()==1)? " person!":" people!"));
 	}
 	
