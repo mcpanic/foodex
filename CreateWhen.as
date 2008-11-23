@@ -204,54 +204,54 @@ class CreateWhen extends FoodExScreen
 	private function increaseDate()
 	{
 		if (selectedDate < 4)
-		{
 			selectedDate = selectedDate + 1;
-			this.target.createscreen.image_when.txtDate.text = DateText[selectedDate];
-		}
+		else
+			selectedDate = 0;
+		this.target.createscreen.image_when.txtDate.text = DateText[selectedDate];
 	}
 	private function decreaseDate()
 	{
 		if (selectedDate > 0)
-		{
 			selectedDate = selectedDate - 1;
-			this.target.createscreen.image_when.txtDate.text = DateText[selectedDate];
-		}
+		else
+			selectedDate = 4;
+		this.target.createscreen.image_when.txtDate.text = DateText[selectedDate];
 	}
 	private function increaseHour()
 	{
 		if (selectedHour < 11)
-		{
 			selectedHour = selectedHour + 1;
-			var end_y:Number = ycoor + 190 - selectedHour*25;
-			new Tween(this.target.createscreen.hour_selector, "_y", None.easeIn, this.target.createscreen.hour_selector._y, end_y, .2, true);
-		}
+		else
+			selectedHour = 0;
+		var end_y:Number = ycoor + 190 - selectedHour*25;
+		new Tween(this.target.createscreen.hour_selector, "_y", None.easeIn, this.target.createscreen.hour_selector._y, end_y, .2, true);
 	}
 	private function decreaseHour()
 	{
 		if (selectedHour > 0)
-		{
 			selectedHour = selectedHour - 1;
-			var end_y:Number = ycoor + 190 - selectedHour*25;
-			new Tween(this.target.createscreen.hour_selector, "_y", None.easeIn, this.target.createscreen.hour_selector._y, end_y, .2, true);
-		}
+		else
+			selectedHour = 11;
+		var end_y:Number = ycoor + 190 - selectedHour*25;
+		new Tween(this.target.createscreen.hour_selector, "_y", None.easeIn, this.target.createscreen.hour_selector._y, end_y, .2, true);
 	}
 	private function increaseMinute()
 	{
 		if (selectedMinute < 5)
-		{
 			selectedMinute = selectedMinute + 1;
-			var end_y:Number = ycoor + 190 - selectedMinute*25;
-			new Tween(this.target.createscreen.minute_selector, "_y", None.easeIn, this.target.createscreen.minute_selector._y, end_y, .2, true);
-		}
+		else
+			selectedMinute = 0;
+		var end_y:Number = ycoor + 190 - selectedMinute*25;
+		new Tween(this.target.createscreen.minute_selector, "_y", None.easeIn, this.target.createscreen.minute_selector._y, end_y, .2, true);
 	}
 	private function decreaseMinute()
 	{
 		if (selectedMinute > 0)
-		{
 			selectedMinute = selectedMinute - 1;
-			var end_y:Number = ycoor + 190 - selectedMinute*25;
-			new Tween(this.target.createscreen.minute_selector, "_y", None.easeIn, this.target.createscreen.minute_selector._y, end_y, .2, true);
-		}
+		else
+			selectedMinute = 5;
+		var end_y:Number = ycoor + 190 - selectedMinute*25;
+		new Tween(this.target.createscreen.minute_selector, "_y", None.easeIn, this.target.createscreen.minute_selector._y, end_y, .2, true);
 	}
 	private function toggleAMPM()
 	{
