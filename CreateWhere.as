@@ -146,14 +146,20 @@ class CreateWhere extends FoodExScreen
 	{
 		if(m == INFO_MODE)
 		{
-			trace(hasSelectedAddress());
-			if(hasSelectedAddress() && !_changeSelect)
+			if(_readOnly)
 			{
-				this.target.createscreen.buttons_where.text1.text = "Change";
+				this.target.createscreen.buttons_where.text1.text = "";
 			}
 			else
 			{
-				this.target.createscreen.buttons_where.text1.text = "OK";
+				if(hasSelectedAddress() && !_changeSelect)
+				{
+					this.target.createscreen.buttons_where.text1.text = "Change";
+				}
+				else
+				{
+					this.target.createscreen.buttons_where.text1.text = "OK";
+				}
 			}
 			selectPane._visible = false;
 			infoPane._visible = true;
