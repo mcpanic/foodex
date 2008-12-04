@@ -31,7 +31,7 @@ class CreateScreen extends MovieClip
 
 		// Screens
 		screen_center = new CreateCenter(this.target, 0, 0, "Create an Event", "Send", "Back");
-		screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "OK", "Cancel", false);
+		screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "OK", "Cancel", false, true);
 		screen_left = new CreateWhen(this.target, -240, 0, "Date and Time", "OK", "Cancel", false);
 		screen_right = new CreateWho(this.target, 240, 0, "Who's coming?", "OK", "Cancel", false, 1);
 		screen_down = new CreateWhere(this.target, 0, 320, "Location", "OK", "Cancel");
@@ -474,6 +474,15 @@ class CreateScreen extends MovieClip
 				showEventData();
 				selected_screen = selected_screen - 1;	// go down to 'center'
 				move_y();
+				break;
+			case Key.UP:
+				screen_up.handleUP();
+				break;
+			case Key.DOWN:
+				screen_up.handleDOWN();
+				break;
+			case Key.ENTER:
+				screen_up.handleENTER();
 				break;
 		}
 	}

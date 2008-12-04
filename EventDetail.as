@@ -7,7 +7,7 @@ class EventDetail extends MovieClip
 	
 	public var eventItem:EventData;
 	
-	private var screen_center:CreateCenter;	// ID: 55
+	private var screen_center:ManageCenter;	// ID: 55
 	private var screen_up:CreateTitle;		// ID: 56
 	private var screen_left:CreateWhen;		// ID: 45
 	private var screen_right:CreateWho;		// ID: 65
@@ -30,8 +30,8 @@ class EventDetail extends MovieClip
 		// Screens
 		if (eventItem.isReadOnly())
 		{
-			screen_center = new CreateCenter(this.target, 0, 0, "Event Detail", (eventItem.getEventStatus()==1)? "Answer":"", "Back");
-			screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "", "Back", true);
+			screen_center = new ManageCenter(this.target, 0, 0, "Event Detail", (eventItem.getEventStatus()==1)? "Answer":"", "Back");
+			screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "", "Back", true, false);
 			screen_left = new CreateWhen(this.target, -240, 0, "Date and Time", "", "Back", true);
 			screen_right = new CreateWho(this.target, 240, 0, "Who's coming?", "", "Back", true, 2);
 			screen_down = new CreateWhere(this.target, 0, 320, "Location", "", "Back");
@@ -39,8 +39,8 @@ class EventDetail extends MovieClip
 		}
 		else
 		{
-			screen_center = new CreateCenter(this.target, 0, 0, "Event Detail", "Manage", "Back");
-			screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "Update", "Back", false);
+			screen_center = new ManageCenter(this.target, 0, 0, "Event Detail", "Manage", "Back");
+			screen_up = new CreateTitle(this.target, 0, -320, "Title and Message", "Update", "Back", false, false);
 			screen_left = new CreateWhen(this.target, -240, 0, "Date and Time", "Update", "Back", false);
 			screen_right = new CreateWho(this.target, 240, 0, "Who's coming?", "Remind", "Back", false, 2);
 			screen_down = new CreateWhere(this.target, 0, 320, "Location", "Update", "Back");
