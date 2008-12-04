@@ -133,6 +133,13 @@ class ManageScreen extends MovieClip
 			case Key.ENTER:
 				answerSelect();
 				break;
+			case ExtendedKey.SOFT1:
+				answerSelect();
+				break;
+			case ExtendedKey.SOFT2:
+				selectedAnswer = 3;
+				answerSelect();
+				break;
 		}
 	}
 	private function onKeyDown_ManageMode()
@@ -148,18 +155,26 @@ class ManageScreen extends MovieClip
 			case Key.ENTER:
 				manageSelect();
 				break;
+			case ExtendedKey.SOFT1:
+				manageSelect();
+				break;
+			case ExtendedKey.SOFT2:
+				selectedManage = 3;
+				manageSelect();
+				break;
 		}
 	}
 
 	private function openAnswer()
 	{
 		isAnswerMode = true;
+		screen_detail.setButtonTexts("Select", "Close");
 	
 		var answer_menu:MovieClip = this.target.createscreen.attachMovie("SelectBox3", "answer_menu", this.target.createscreen.getNextHighestDepth(), {_x:0, _y:205});
 		answer_menu.selector._y = 5;
-		answer_menu.txt1.text = "1. Accept this invitation";
-		answer_menu.txt2.text = "2. Decline this invitation";
-		answer_menu.txt3.text = "3. BACK";
+		answer_menu.txt1.text = "Accept this invitation";
+		answer_menu.txt2.text = "Decline this invitation";
+		answer_menu.txt3.text = "Close";
 		answer_menu._alpha = 80;
 		selectedAnswer = 1;
 	}
@@ -185,7 +200,8 @@ class ManageScreen extends MovieClip
 	{
 		this.target.createscreen.answer_menu.removeMovieClip();
 		isAnswerMode = false;
-		
+		screen_detail.setButtonTextsToDefault();
+	
 		if (selectedAnswer == 1)
 			openConfirm(3);
 		else if (selectedAnswer == 2)
@@ -195,12 +211,13 @@ class ManageScreen extends MovieClip
 	private function openManage()
 	{
 		isManageMode = true;
+		screen_detail.setButtonTexts("Select", "Close");
 	
 		var manage_menu:MovieClip = this.target.createscreen.attachMovie("SelectBox3", "manage_menu", this.target.createscreen.getNextHighestDepth(), {_x:0, _y:205});
 		manage_menu.selector._y = 5;
-		manage_menu.txt1.text = "1. Updata event info";
-		manage_menu.txt2.text = "2. Cancel this event";
-		manage_menu.txt3.text = "3. BACK";
+		manage_menu.txt1.text = "Updata event info";
+		manage_menu.txt2.text = "Cancel this event";
+		manage_menu.txt3.text = "Close";
 		manage_menu._alpha = 80;
 		selectedManage = 1;
 	}
@@ -226,6 +243,7 @@ class ManageScreen extends MovieClip
 	{
 		this.target.createscreen.manage_menu.removeMovieClip();
 		isManageMode = false;
+		screen_detail.setButtonTextsToDefault("Manage", "Back");
 
 		if (selectedManage == 1)
 			openConfirm(1);

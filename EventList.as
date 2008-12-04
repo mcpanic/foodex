@@ -79,6 +79,10 @@ class EventList extends FoodExScreen
 			endFill();
 		}
 	}
+	public function setButtonTexts(btn1:String, btn2:String)
+	{
+		this.setButtons(btn1, btn2);
+	}
 	public function removeScreen()
 	{
 		titlebar.removeMovieClip();

@@ -54,6 +54,21 @@ class EventDetail extends MovieClip
 		isAlertMode = false;
 	}
 	
+	public function setButtonTexts(btn1:String, btn2:String)
+	{
+		screen_center.setButtons(btn1, btn2);
+	}
+	public function setButtonTextsToDefault()
+	{
+		if (eventItem.isReadOnly())
+		{
+			screen_center.setButtons((eventItem.getEventStatus()==1)? "Answer":"", "Back");
+		}
+		else
+		{
+			screen_center.setButtons("Manage", "Back");
+		}
+	}
 	public function getSelectedScreen():Number
 	{
 		return selected_screen;
