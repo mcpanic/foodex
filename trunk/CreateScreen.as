@@ -465,10 +465,17 @@ class CreateScreen extends MovieClip
 		switch (Key.getCode())
 		{
 			case ExtendedKey.SOFT1:
-				updateTitleData();
-				showEventData();
-				selected_screen = selected_screen - 1;	// go down to 'center'
-				move_y();
+				if (screen_up.getFocus() == 1)
+				{
+					screen_up.handleENTER();
+				}
+				else
+				{
+					updateTitleData();
+					showEventData();
+					selected_screen = selected_screen - 1;	// go down to 'center'
+					move_y();
+				}
 				break;
 			case ExtendedKey.SOFT2:
 				showEventData();

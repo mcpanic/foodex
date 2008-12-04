@@ -26,7 +26,14 @@
 		}
 		var strHour = (hour12>9)? hour12.toString() : "0" + hour12.toString();
 		var strMinute = (dateTime.getMinutes()>9)? dateTime.getMinutes().toString() : "0" + dateTime.getMinutes().toString();
-		return dateTime.getLocaleShortDate() + "\n" + strHour + ":" + strMinute + ampm;
+		
+		var strYear = dateTime.getFullYear().toString();
+		var month = dateTime.getMonth()+1;
+		var strMonth = (month>9)? month.toString() : "0" + month.toString();
+		var date = dateTime.getDate();
+		var strDate = (date>9)? date.toString() : "0" + date.toString();
+//		return dateTime.getLocaleShortDate() + "\n" + strHour + ":" + strMinute + ampm;
+		return strMonth + "/" + strDate + "/" + strYear + "\n" + strHour + ":" + strMinute + ampm;
 	}
 	
 	public function setDate(year:Number, month:Number, day:Number)

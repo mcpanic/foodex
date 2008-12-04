@@ -52,6 +52,14 @@ class CreateTitle extends FoodExScreen
 		}
 	}
 
+	public function getFocus()
+	{
+		if (isSelecting)
+			return 1;
+		else
+			return 2;
+	}
+	
 	private function showTitleSelector()
 	{
 		isSelecting = true;
