@@ -28,6 +28,7 @@ class CreateWhen extends FoodExScreen
 		
 		readonly = ro;
 		this.target.createscreen.image_when.focus_arrow._visible = !readonly;
+		this.target.createscreen.image_when.inst._visible = !readonly;
 		
 		setFocus(1);
 	}
